@@ -3,8 +3,13 @@ import React from 'react'
 const Navbar = () => {
   return (
 
-    <nav className='bg-purple-200 flex justify-around items-center px-4 h-14'>
-        <div className='logo font-bold'>Password-Manger</div>
+    <nav className='bg-slate-800 text-white'>
+      <div className='my-container flex justify-around items-center px- py-5 h-14'>
+        <div className='logo font-bold text-2xl'>
+          <span className='text-green-700'> &lt;</span>
+          Password-
+          <span className='text-green-700'>King/ &gt;</span>
+          </div>
         <ul>
             <li className='flex gap-4'> 
                 <a className='hover:font-bold' href="/">Home</a>
@@ -12,6 +17,7 @@ const Navbar = () => {
                 <a className='hover:font-bold' href="">Contact</a>
             </li>
         </ul>
+        </div>
     </nav>
   )
 }
