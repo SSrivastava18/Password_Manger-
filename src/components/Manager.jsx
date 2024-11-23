@@ -11,19 +11,18 @@ const Manager = () => {
                     <span className='text-green-700'>King/ &gt;</span>
                 </h1>
                 <p className='text-green-900 text-lg text-center'>Your own Password manager</p>
-                <div className='text-black flex flex-col p-4 gap-5'>
-                    <input className='rounded-full flex flex-col border border-green-500 p-4 w-full py-1' type="text" name='' id='' />
+                <div className='text-black flex flex-col p-4 gap-5 items-center'>
+                    <input placeholder='Enter Website-URL' className='rounded-full flex flex-col border border-green-500 p-4 w-full py-1' type="text" name='' id='' />
                     <div className='flex w-full gap-8'>
-                        <input className='rounded-full flex flex-col border border-green-500 p-4 w-full py-1' type="text" name='' id='' />
-                        <input className='rounded-full flex flex-col border border-green-500 p-4 w-full py-1' type="text" name='' id='' />
-
+                        <input placeholder='Username' className='rounded-full flex flex-col border border-green-500 p-4 w-full py-1' type="text" name='' id='' />
+                        <div className='relative'>
+                        <input placeholder='Password' className='rounded-full flex flex-col border border-green-500 p-4 w-full py-1' type="text" name='' id='' />
+                        <span className='absolute right-[3px] top-[4px] cursor-pointer'>
+                        <img className='p-1' width={25} src="sa.png" alt="No" />
+                        </span>
+                        </div>
                     </div>
-                    <lord-icon
-                        src="https://cdn.lordicon.com/sbnjyzil.json"
-                        trigger="hover"
-                        style="width:250px;height:250px">
-                    </lord-icon>
-                    <button>Add Password</button>
+                    <button className='bg-blue-600 rounded-full justify-center px-4 py-2 w-fit hover:bg-blue-400'>Add Password</button>
                 </div>
             </div>
         </div>
