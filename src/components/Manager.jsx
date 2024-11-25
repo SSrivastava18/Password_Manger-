@@ -1,4 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
+import sa from "../Images/sa.png"
+import ce from "../Images/ce.png"
+import d from "../Images/d.png"
+import e from "../Images/e.png"
+import { v4 as uuidv4 } from 'uuid';
+
+
+
+
 
 const Manager = () => {
     const [form, setForm] = useState({ site: "", username: "", password: "" });
@@ -23,10 +32,23 @@ const Manager = () => {
 
     const savePassword = () => {
         // console.log("Form Data:", form);
-        setPasswordArray([...passwordArray, form]);
-        localStorage.setItem("passwords", JSON.stringify([...passwordArray, form]))
+        setPasswordArray([...passwordArray, {...form, id: uuidv4()}]);
+        localStorage.setItem("passwords", JSON.stringify([...passwordArray, {...form, id: uuidv4()}]));
         console.log(...passwordArray, form);
-
+    };
+    const deletePassword = (id) => {
+        console.log("Deleting password with id", id)
+        // console.log("Form Data:", form);
+        // setPasswordArray([...passwordArray, {...form, id: uuidv4()}]);
+        // localStorage.setItem("passwords", JSON.stringify([...passwordArray, form]))
+        // console.log(...passwordArray, form);
+    };
+    const editPassword = (id) => {
+        console.log("Deleting password with id", id)
+        // console.log("Form Data:", form);
+        // setPasswordArray([...passwordArray, {...form, id: uuidv4()}]);
+        // localStorage.setItem("passwords", JSON.stringify([...passwordArray, form]))
+        // console.log(...passwordArray, form);
     };
 
     return (
@@ -72,7 +94,7 @@ const Manager = () => {
                                 <img
                                     className="p-1"
                                     width={25}
-                                    src={showPassword ? "sa.png" : "ce.png"}
+                                    src={showPassword ? ce : sa}
                                     alt="Toggle Password Visibility"
                                     onClick={togglePassword}
                                 />
@@ -96,6 +118,7 @@ const Manager = () => {
                                 <th className='py-2'>Site</th>
                                 <th className='py-2'>Username</th>
                                 <th className='py-2'>Password</th>
+                                <th className='py-2'>Actions</th>
                             </tr>
                         </thead>
                         <tbody className='bg-green-200'>
@@ -104,6 +127,17 @@ const Manager = () => {
                                 <td   className='py-2 text-center w-32'><a href={item.site} target='_blank'>{item.site}</a></td>
                                 <td   className='py-2 text-center w-32'>{item.username}</td>
                                 <td   className='py-2 text-center w-32'>{item.password}</td>
+                                <td   className='justify-center py-2 text-center w-32 '>
+                                    <div className='flex px-4 justify-center text-center gap-1'>
+                                    <span className='cursor-pointer ' onClick={()=>{deletePassword(item.id)}}>
+                                        <img src= {d} width={20} alt="" />
+                                    </span>
+                                    <span className='cursor-pointer' onClick={()=>{editPassword(item.id)}}>
+                                        <img src= {e} width={20} alt="" />
+                                    </span>
+                                    </div>
+                                </td>
+
                             </tr>
                             })}
                         </tbody>
