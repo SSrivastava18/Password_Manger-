@@ -5,10 +5,6 @@ import d from "../Images/d.png"
 import e from "../Images/e.png"
 import { v4 as uuidv4 } from 'uuid';
 
-
-
-
-
 const Manager = () => {
     const [form, setForm] = useState({ site: "", username: "", password: "" });
     const [showPassword, setShowPassword] = useState(false);
