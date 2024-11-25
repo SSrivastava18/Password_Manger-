@@ -31,26 +31,26 @@ const Manager = () => {
     };
 
     const savePassword = () => {
-        // console.log("Form Data:", form);
         setPasswordArray([...passwordArray, {...form, id: uuidv4()}]);
         localStorage.setItem("passwords", JSON.stringify([...passwordArray, {...form, id: uuidv4()}]));
         console.log(...passwordArray, form);
+        setForm({ site: "", username: "", password: "" })
     };
     const deletePassword = (id) => {
         console.log("Deleting password with id", id)
-        // console.log("Form Data:", form);
-        // setPasswordArray([...passwordArray, {...form, id: uuidv4()}]);
-        // localStorage.setItem("passwords", JSON.stringify([...passwordArray, form]))
-        // console.log(...passwordArray, form);
+        let c = confirm("Do you really want to delete this password?")
+        if (c) {
+            
+            setPasswordArray(passwordArray.filter(item=>item.id!==id));
+            localStorage.setItem("passwords", JSON.stringify(passwordArray.filter(item=>item.id!==id)))
+        }
+        
     };
     const editPassword = (id) => {
         console.log("Editing password with id", id)
-        // console.log("Form Data:", form);
-        // setPasswordArray([...passwordArray, {...form, id: uuidv4()}]);
-        // localStorage.setItem("passwords", JSON.stringify([...passwordArray, form]))
-        // console.log(...passwordArray, form);
+        setForm(passwordArray.filter(i=>i.id===id)[0])
+        setPasswordArray(passwordArray.filter(item=>item.id!==id))
     };
-
     return (
         <div>
             {/* Background gradient */}
